@@ -1,0 +1,23 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5440/inventory
+    username: inventory
+    password: inventory
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+logging:
+  level:
+    org.springframework: INFO
+    org.springframework.kafka: INFO
+  file:
+    name: logs/spring-boot-app.log
