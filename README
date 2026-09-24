@@ -1,0 +1,84 @@
+# Kafka Lab
+
+Laboratório prático de **Apache Kafka + Spring Boot**, criado para estudar e simular cenários reais de sistemas distribuídos e arquiteturas orientadas a eventos.
+
+O projeto simula uma plataforma de processamento de pedidos, onde diferentes serviços se comunicam de forma assíncrona através do Kafka.
+
+A ideia é evoluir o projeto progressivamente, partindo de um fluxo simples de Producer/Consumer até conceitos utilizados em ambientes de produção, como **Consumer Groups, Partitions, Idempotência, Outbox Pattern, Retry, Dead Letter Queue, Concorrência, Consumer Lag e Observabilidade**.
+
+---
+
+## 🎯 Objetivos
+
+Este projeto tem como objetivo estudar na prática:
+
+* Apache Kafka
+* Producers e Consumers
+* Topics
+* Partitions
+* Offsets
+* Consumer Groups
+* Message Keys
+* Ordenação de eventos
+* At-least-once delivery
+* Idempotência
+* Retry e Backoff
+* Dead Letter Queue (DLQ)
+* Outbox Pattern
+* Transactions
+* Concorrência
+* Consumer Lag
+* Escalabilidade horizontal
+* Resiliência
+* Observabilidade
+* Performance e processamento de alto volume
+
+---
+
+# 🏗️ Arquitetura
+
+A arquitetura será construída utilizando múltiplos serviços independentes.
+
+```text
+                         ┌───────────────────┐
+                         │      Client       │
+                         └─────────┬─────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │   Order Service   │
+                         │    Spring Boot    │
+                         └─────────┬─────────┘
+                                   │
+                              PostgreSQL
+                                   │
+                              Outbox Event
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │       Kafka       │
+                         │                   │
+                         │  orders.events    │
+                         │  payments.events  │
+                         │  inventory.events │
+                         └───────┬───┬───────┘
+                                 │   │
+                    ┌────────────┘   └────────────┐
+                    ▼                             ▼
+          ┌──────────────────┐          ┌──────────────────┐
+          │ Payment Service  │          │ Inventory Service│
+          │   Spring Boot    │          │   Spring Boot    │
+          └────────┬─────────┘          └────────┬─────────┘
+                   │                             │
+                   ▼                             ▼
+              PostgreSQL                    PostgreSQL
+
+                         ┌─────────────────────┐
+                         │ Notification Service│
+                         │     Spring Boot     │
+                         └─────────────────────┘
+```
+
+---
+
+# �
