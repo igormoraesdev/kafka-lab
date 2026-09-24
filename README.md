@@ -35,7 +35,7 @@ Este projeto tem como objetivo estudar na prática:
 
 ---
 
-# 🏗️ Arquitetura
+## 🏗️ Arquitetura
 
 A arquitetura será construída utilizando múltiplos serviços independentes.
 
@@ -78,7 +78,3 @@ A arquitetura será construída utilizando múltiplos serviços independentes.
                          │     Spring Boot     │
                          └─────────────────────┘
 ```
-
----
-
-# �
