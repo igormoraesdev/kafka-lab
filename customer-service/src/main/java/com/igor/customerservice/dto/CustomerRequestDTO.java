@@ -1,0 +1,9 @@
+package com.igor.customerservice.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record CustomerRequestDTO(
+    @NotBlank String name,
+    @NotBlank @Email String email) {
+}
