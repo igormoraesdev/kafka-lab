@@ -28,14 +28,14 @@ public class CustomerService {
 
   public CustomerResponseDTO getCustomerById(Long customerId) {
     CustomerEntity customer = customerRepository.findById(customerId)
-        .orElseThrow(() -> new RuntimeException("Customer não encontrado"));
+        .orElseThrow(() -> new CustomerNotFoundException(customerId));
 
     return CustomerResponseDTO.from(customer);
   }
 
   public CustomerResponseDTO updateCustomerById(Long customerId, CustomerRequestDTO request) {
     CustomerEntity customer = customerRepository.findById(customerId)
-        .orElseThrow(() -> new RuntimeException("Customer não encontrado"));
+        .orElseThrow(() -> new CustomerNotFoundException(customerId));
 
     if (request != null && customerId != null) {
       customer.setEmail(request.email());
