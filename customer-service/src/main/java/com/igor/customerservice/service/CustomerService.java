@@ -37,10 +37,8 @@ public class CustomerService {
     CustomerEntity customer = customerRepository.findById(customerId)
         .orElseThrow(() -> new CustomerNotFoundException(customerId));
 
-    if (request != null && customerId != null) {
-      customer.setEmail(request.email());
-      customer.setName(request.name());
-    }
+    customer.setEmail(request.email());
+    customer.setName(request.name());
     return CustomerResponseDTO.from(customerRepository.save(customer));
   }
 
