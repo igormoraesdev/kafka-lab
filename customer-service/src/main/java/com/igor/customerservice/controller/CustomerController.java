@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 @RestController
 @RequiredArgsConstructor
 public class CustomerController {
@@ -41,8 +41,8 @@ public class CustomerController {
   }
 
   @PutMapping("{id}")
-  public ResponseEntity<CustomerResponseDTO> updateCustomer(@Valid @PathVariable Long id,
-      @RequestBody CustomerRequestDTO request) {
+  public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable Long id,
+      @Valid @RequestBody CustomerRequestDTO request) {
     CustomerResponseDTO customer = customerService.updateCustomerById(id, request);
 
     return ResponseEntity.ok().body(customer);
